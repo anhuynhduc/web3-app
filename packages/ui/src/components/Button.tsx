@@ -1,9 +1,17 @@
-import React from "react";
+// Button.tsx
+
+import React from 'react';
 
 interface ButtonProps {
-  children: React.ReactNode
+  children: React.ReactNode;
+  onClick: () => void;
+  className?: string; // Add className as an optional prop
 }
 
-export const Button: React.FC<ButtonProps> = ({ children }) => {
-  return <button className="w-[100px] h-[40px] bg-blue-400">{children}</button>;
+export const Button: React.FC<ButtonProps> = ({ children, onClick, className }) => {
+  return (
+    <button className={className} onClick={onClick}>
+      {children}
+    </button>
+  );
 };
