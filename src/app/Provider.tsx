@@ -3,7 +3,7 @@ import React from 'react';
 import { RainbowKitProvider, getDefaultWallets, connectorsForWallets } from "@rainbow-me/rainbowkit";
 import { argentWallet, trustWallet, ledgerWallet } from "@rainbow-me/rainbowkit/wallets";
 import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { polygonMumbai, sepolia, lineaTestnet} from "viem/chains";
+import { polygonMumbai, sepolia, lineaTestnet } from "viem/chains";
 import { publicProvider} from "@wagmi/core/dist/providers/public";
 
 interface providerProps{
@@ -49,7 +49,7 @@ const wagmiConfig = createConfig({
 const Provider: React.FC<providerProps> = ({ children }) => {
   return (
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains} appInfo={appInfo} modalSize="compact">
+      <RainbowKitProvider chains={chains} appInfo={appInfo} modalSize="compact" >
         {children}
       </RainbowKitProvider>
     </WagmiConfig>

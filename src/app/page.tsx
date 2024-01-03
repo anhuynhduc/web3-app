@@ -2,14 +2,73 @@
 
 import {Button, Datepicker, Input, Modal, Theme} from "@custom/ui";
 import { useUpdateValue, useFetchApi } from "@custom/hooks";
-import {Fragment, useState} from "react";
+import {Fragment, useState, useEffect} from "react";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
+declare global {
+  interface Window {
+    ethereum?: any;
+  }
+}
 
 export default function Home() {
   const [value, updateValue] = useUpdateValue();
   const response = useFetchApi('https://jsonplaceholder.typicode.com/todos');
   const [showModal, setShowModal] = useState(false)
+
+  const [walletAddress, setWalletAddress] = useState("");
+
+  useEffect(() => {
+    getCurrentWalletConnected();
+    addWalletListener();
+  }, [walletAddress]);
+
+  const connectWallet = async () => {
+    if (typeof window != "undefined" && typeof window.ethereum != "undefined") {
+      try {
+        // MetaMask is installed
+        const accounts = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        setWalletAddress(accounts[0]);
+      } catch (err: any) {
+        console.error(err.message);
+      }
+    } else {
+      // MetaMask is not installed
+      console.log("Please install MetaMask");
+    }
+  };
+
+  const getCurrentWalletConnected = async () => {
+    if (typeof window != "undefined" && typeof window.ethereum != "undefined") {
+      try {
+        const accounts = await window.ethereum.request({
+          method: "eth_accounts",
+        });
+        if (accounts.length > 0) {
+          setWalletAddress(accounts[0]);
+        } else {
+          console.log("Connect to MetaMask using the Connect button");
+        }
+      } catch (err: any) {
+        console.error(err.message);
+      }
+    } else {
+      console.log("Please install MetaMask");
+    }
+  };
+
+  const addWalletListener = async () => {
+    if (typeof window != "undefined" && typeof window.ethereum != "undefined") {
+      window.ethereum.on("accountsChanged", (accounts: any[]) => {
+        setWalletAddress(accounts[0]);
+      });
+    } else {
+      setWalletAddress("");
+      console.log("Please install MetaMask");
+    }
+  };
 
   return (
     <Fragment>
@@ -48,6 +107,17 @@ export default function Home() {
             {/*</Button>*/}
             {/*<Datepicker/>*/}
             {/*<ConnectButton/>*/}
+            <Button
+              onClick={connectWallet}
+            >
+
+              {walletAddress && walletAddress.length > 0
+                ? `Connected: ${walletAddress.substring(
+                  0,
+                  6
+                )}...${walletAddress.substring(38)}`
+                : "Connect Wallet"}
+            </Button>
           </div>
         </main>
       </Theme>
