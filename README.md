@@ -16,3 +16,32 @@ Môi Trường Phi Tập Trung: DApp thường cung cấp một môi trường p
 
 Open Source: Nhiều DApp được phát triển và duy trì như một dự án mã nguồn mở, giúp cộng đồng đóng góp vào sự phát triển và cải thiện của ứng dụng.
 
+Window.ethereum:
+
+là một đối tượng trong JavaScript, thường được sử dụng để tương tác với blockchain Ethereum từ trình duyệt.
+
+window.ethereum thường có các thuộc tính và phương thức sau:
+
+ethereum.request: Một phương thức để gửi các yêu cầu đến MetaMask hoặc trình duyệt có tích hợp ví.
+
+ethereum.on: Một phương thức để đăng ký lắng nghe sự kiện, chẳng hạn như sự kiện khi tài khoản thay đổi.
+
+ethereum.selectedAddress: Địa chỉ ví được chọn hiện tại.
+
+Lưu ý:
+window.ethereum hoạt động khi Extensions trong google có add MetaMask hoặc có loại ví điện tử vào , nếu chưa có loại ví điện tử nào thì window.ethereum sẽ không hoạt động.
+
+Network trong MetaMask : 
+
+có 2 loại mạng đó là Mainnet và Testnet : 
+
+- Mạng Mainnet là mạng chính thức của blockchain, nơi mà các giao dịch và các hợp đồng thông minh được thực hiện với giá trị thực
+
+- Testnet là môi trường mà nhà phát triển và người kiểm thử có thể triển khai và thử nghiệm ứng dụng của họ mà không cần sử dụng tiền thật
+Khi connect wallet sẽ có các loại mạng khác nhau , tuỳ vào mục đích sử dụng , ta sẽ chọn loại mạng phù hợp
+
+Lưu ý: 
+- Mỗi mạng sẽ có 1 chainId và New RPC URL để phân biệt nhau
+- New RPC URL là đường dẫn giúp tương tác với loại mạng cũng giống như đường dẫn server dùng để tương tác với api 
+
+
