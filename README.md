@@ -1,18 +1,7 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Overview of things to pay attention to with web3
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+DApp:
+Viết tắt của "Decentralized Application" (Ứng dụng Phi tập trung). Đây là một loại ứng dụng mà hệ thống và dữ liệu của nó được triển khai trên blockchain, thường là một mạng lưới blockchain như Ethereum. DApp sử dụng lợi ích của công nghệ blockchain để tạo ra một mô hình phi tập trung, trong đó dữ liệu không nằm ở một trung tâm duy nhất mà được phân phối trên nhiều nút trên mạng
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
