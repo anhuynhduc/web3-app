@@ -1,6 +1,6 @@
 ## Overview web3 and blockchain
 
-DApp:
+## DApp:
 
 Viết tắt của "Decentralized Application" (Ứng dụng Phi tập trung). Đây là một loại ứng dụng mà hệ thống và dữ liệu của nó được triển khai trên blockchain, thường là một mạng lưới blockchain như Ethereum. DApp sử dụng lợi ích của công nghệ blockchain để tạo ra một mô hình phi tập trung, trong đó dữ liệu không nằm ở một trung tâm duy nhất mà được phân phối trên nhiều nút trên mạng
 
@@ -16,7 +16,7 @@ Môi Trường Phi Tập Trung: DApp thường cung cấp một môi trường p
 
 Open Source: Nhiều DApp được phát triển và duy trì như một dự án mã nguồn mở, giúp cộng đồng đóng góp vào sự phát triển và cải thiện của ứng dụng.
 
-Window.ethereum:
+## Window.ethereum:
 
 là một đối tượng trong JavaScript, thường được sử dụng để tương tác với blockchain Ethereum từ trình duyệt.
 
@@ -31,7 +31,7 @@ ethereum.selectedAddress: Địa chỉ ví được chọn hiện tại.
 Lưu ý:
 window.ethereum hoạt động khi Extensions trong google có add MetaMask hoặc có loại ví điện tử vào , nếu chưa có loại ví điện tử nào thì window.ethereum sẽ không hoạt động.
 
-Network trong MetaMask : 
+## Network trong MetaMask : 
 
 có 2 loại mạng đó là Mainnet và Testnet : 
 
