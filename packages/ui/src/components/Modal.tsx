@@ -20,13 +20,13 @@ interface ModalProps {
       onClick={handleClose}
     >
       <div className="w-[600px] flex flex-col">
-        <button
-          className="text-white text-xl place-self-end cursor-pointer"
-          onClick={() => onClose()}
-        >
-          X
-        </button>
         <div className="bg-white p-2 rounded">
+          <button
+            className="text-black text-xl place-self-end cursor-pointer float-end mr-2"
+            onClick={() => onClose()}
+          >
+            X
+          </button>
           {children}
         </div>
       </div>

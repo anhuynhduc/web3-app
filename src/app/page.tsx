@@ -1,8 +1,9 @@
 "use client"
 
-import {Button, Datepicker, Input, Modal, Theme} from "@custom/ui";
+import {Button, Datepicker, Select, Input, Modal, Table, TableCell, TableRow, Theme} from "@custom/ui";
 import { useUpdateValue, useFetchApi } from "@custom/hooks";
 import {Fragment, useState, useEffect} from "react";
+import { faFaceFrown } from '@fortawesome/free-solid-svg-icons';
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 declare global {
@@ -70,24 +71,33 @@ export default function Home() {
     }
   };
 
+  const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+
+  const handleDateChange = (date: Date | null) => {
+    setSelectedDate(date);
+  };
+
   return (
     <Fragment>
       <Theme>
         <main className="flex min-h-screen flex-col items-center justify-between p-24">
           <div className="max-w-5xl w-full items-center font-mono text-sm ">
-            {/*<div className="mt-[-50px]">*/}
-            {/*  <p>{value}</p>*/}
-            {/*  <Button*/}
-            {/*    className="w-[100px] h-[40px] bg-green-500 text-white rounded-[10px] hover:bg-blue-600 cursor-pointer"*/}
-            {/*    onClick={() => updateValue('new value')}*/}
-            {/*    width={200}*/}
-            {/*    height={40}*/}
-            {/*    // variant="primary"*/}
-            {/*  >*/}
-            {/*    Click Me!*/}
-            {/*  </Button>*/}
-            {/*  <Input width={200} height={50} placeholder="please enter text"/>*/}
-            {/*</div>*/}
+            <div className="mt-[-50px]">
+              <p>{value}</p>
+              <Button
+                className='w-fit mx-auto mt-20' icon={faFaceFrown} iconSize="50px" iconPosition='before'
+                onClick={() => updateValue('new value')}
+              >
+                Click Me!
+              </Button>
+              <Input
+                width={250}
+                height={50}
+                placeholder="please enter text"
+                className="ml-3"
+                variant="success"
+              />
+            </div>
             {/*<div className="flex justify-center items-center">*/}
             {/*  <div>*/}
             {/*    {response.map((item:{ userId: number, title: string }) => {*/}
@@ -99,47 +109,90 @@ export default function Home() {
             {/*      })}*/}
             {/*  </div>*/}
             {/*</div>*/}
-            {/*<Button*/}
-            {/*  className="w-[100px] h-[40px] bg-green-500 text-white rounded-[10px] hover:bg-blue-600 cursor-pointer"*/}
-            {/*  onClick={() => setShowModal(true)}*/}
-            {/*>*/}
-            {/*  Show Modal*/}
-            {/*</Button>*/}
-            {/*<Datepicker/>*/}
-            {/*<ConnectButton/>*/}
             <Button
-              onClick={connectWallet}
+              onClick={() => setShowModal(true)}
             >
-
-              {walletAddress && walletAddress.length > 0
-                ? `Connected: ${walletAddress.substring(
-                  0,
-                  6
-                )}...${walletAddress.substring(38)}`
-                : "Connect Wallet"}
+              Show Modal
             </Button>
+            <Datepicker
+              selectedDate={selectedDate}
+              onChange={handleDateChange}
+              className="ml-3 mt-3"
+            />
+
+            <Table className="mt-3 rounded-[6px]">
+              <TableRow className="h-8">
+                <TableCell isHeader>Header 1</TableCell>
+                <TableCell isHeader>Header 2</TableCell>
+                <TableCell isHeader>Header 3</TableCell>
+              </TableRow>
+              <TableRow className="h-14">
+                <TableCell className="text-center">Data 1</TableCell>
+                <TableCell className="text-center">Data 2</TableCell>
+                <TableCell className="text-center">Data 3</TableCell>
+              </TableRow>
+              <TableRow className="h-14">
+                <TableCell className="text-center">Data 4</TableCell>
+                <TableCell className="text-center">Data 5</TableCell>
+                <TableCell className="text-center">Data 6</TableCell>
+              </TableRow>
+            </Table>
+
+            <Select
+              className="mt-3"
+              options={[
+                {
+                  label: ('5M'),
+                  value: '5M',
+                },
+                {
+                  label: ('1H'),
+                  value: '1H',
+                },
+                {
+                  label: ('6H'),
+                  value: '6H',
+                },
+                {
+                  label: ('24H'),
+                  value: '24H',
+                },
+              ]}
+            />
+
+            {/*<ConnectButton/>*/}
+            {/*<Button*/}
+            {/*  onClick={connectWallet}*/}
+            {/*>*/}
+            {/*  {walletAddress && walletAddress.length > 0*/}
+            {/*    ? `Connected: ${walletAddress.substring(*/}
+            {/*      0,*/}
+            {/*      6*/}
+            {/*    )}...${walletAddress.substring(38)}`*/}
+            {/*    : "Connect Wallet"}*/}
+            {/*</Button>*/}
           </div>
         </main>
       </Theme>
-      {/*<Modal isVisible={showModal} onClose={() => setShowModal(false)}>*/}
-      {/*  <div className="p-6">*/}
-      {/*    <h3 className="text-xl font-semibold text-gray-900 mb-5">*/}
-      {/*      Modal Title*/}
-      {/*    </h3>*/}
-      {/*    <p className="mb-5 font-normal text-gray-500">*/}
-      {/*      Danh sách Thẻ công việc NREGA toàn quốc là một ứng dụng Android được phát triển bởi*/}
-      {/*      dịch vụ GVU App Of India. Nó thuộc danh mục Giáo dục & Tham khảo, cụ thể là Tạp chí & Báo.*/}
-      {/*      Ứng dụng này cho phép người dùng tìm kiếm và tải xuống thẻ công việc Mnrega của họ bằng cách cung*/}
-      {/*      cấp thông tin cơ bản hoặc số thẻ công việc.*/}
-      {/*    </p>*/}
-      {/*    <p className="mb-5 font-normal text-gray-500">*/}
-      {/*      Vui lòng lưu ý rằng ứng dụng này không phải là một ứng dụng chính thức và không liên kết,*/}
-      {/*      tài trợ hoặc tài trợ bởi bất kỳ doanh nghiệp chính phủ nào. Nó chỉ cung cấp dữ liệu từ trang*/}
-      {/*      web chính phủ, có sẵn miễn phí trong miền công cộng. Ứng dụng không yêu cầu bất kỳ thông tin cá nhân nào,*/}
-      {/*      nhưng người dùng nên nhận thức rằng trang web chính phủ có thể yêu cầu họ cung cấp dữ liệu tự chịu rủi ro.*/}
-      {/*    </p>*/}
-      {/*  </div>*/}
-      {/*</Modal>*/}
+      <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
+        <div className="p-6">
+          <h3 className="text-xl font-semibold text-gray-900 mb-5">
+            Modal Title
+          </h3>
+          <p className="mb-5 font-normal text-gray-500">
+            Danh sách Thẻ công việc NREGA toàn quốc là một ứng dụng Android được phát triển bởi
+            dịch vụ GVU App Of India. Nó thuộc danh mục Giáo dục & Tham khảo, cụ thể là Tạp chí & Báo.
+            Ứng dụng này cho phép người dùng tìm kiếm và tải xuống thẻ công việc Mnrega của họ bằng cách cung
+            cấp thông tin cơ bản hoặc số thẻ công việc.
+          </p>
+          <p className="mb-5 font-normal text-gray-500">
+            Vui lòng lưu ý rằng ứng dụng này không phải là một ứng dụng chính thức và không liên kết,
+            tài trợ hoặc tài trợ bởi bất kỳ doanh nghiệp chính phủ nào. Nó chỉ cung cấp dữ liệu từ trang
+            web chính phủ, có sẵn miễn phí trong miền công cộng. Ứng dụng không yêu cầu bất kỳ thông tin cá nhân nào,
+            nhưng người dùng nên nhận thức rằng trang web chính phủ có thể yêu cầu họ cung cấp dữ liệu tự chịu rủi ro.
+          </p>
+        </div>
+      </Modal>
     </Fragment>
   );
 }

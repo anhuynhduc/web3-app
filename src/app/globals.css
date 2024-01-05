@@ -25,3 +25,7 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.last-row:last-child > td {
+  border-bottom: none;
+}
